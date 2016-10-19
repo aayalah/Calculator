@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var outputLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,8 +24,25 @@ class ViewController: UIViewController {
     }
 
     
+    let calculator: CalculatorBrain = CalculatorBrain()
+    
+    @IBAction func setOperand(_ sender: UIButton) {
+        var isUserTyping = false
+        if let number = Double(sender.currentTitle!) {
+            if(!isUserTyping) {
+                outputLabel.text = String(number)
+                isUserTyping = true
+            } else {
+                outputLabel.text = outputLabel.text! + String(number)
+            }
+        }
+ 
+    }
     
     
+    
+    @IBAction func enterOperator(_ sender: UIButton) {
+    }
     
     
     
